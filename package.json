@@ -1,0 +1,48 @@
+{
+  "name": "growth-pl",
+  "version": "1.0.0",
+  "description": "A programming language for gardeners.",
+  "main": "main.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "growth:ts": "ts-node ./src/main.ts",
+    "growth:js": "node ./build/js/main.js",
+    "growth": "npm run growth:js",
+    "lint": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyntaz/growth-pl.git"
+  },
+  "keywords": [
+    "language",
+    "tree",
+    "branch"
+  ],
+  "author": "Pedro Quintas",
+  "bugs": {
+    "url": "https://github.com/Kyntaz/growth-pl/issues"
+  },
+  "homepage": "https://github.com/Kyntaz/growth-pl#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "7.16.7",
+    "@types/jest": "27.4.1",
+    "@typescript-eslint/eslint-plugin": "5.20.0",
+    "@typescript-eslint/parser": "5.20.0",
+    "eslint": "8.13.0",
+    "eslint-config-prettier": "8.5.0",
+    "jest": "27.5.1",
+    "prettier": "2.6.2",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.3"
+  },
+  "dependencies": {
+    "tau-prolog": "0.3.2"
+  },
+  "volta": {
+    "node": "16.14.2",
+    "npm": "8.7.0"
+  }
+}
