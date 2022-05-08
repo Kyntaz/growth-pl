@@ -58,7 +58,6 @@ This will execute the Growth program described in the input file.
 ## 📜 More Documentation
 
 * [Growth language specification](docs/Language.md)
-* [Growth compiler architecture](docs/Architecture.md)
 
 ## ℹ️ License
 
