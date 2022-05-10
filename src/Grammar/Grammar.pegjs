@@ -30,23 +30,26 @@ literal
     / name
     / number
     / string
+    / root
+    / reference
+    / "(" out:expression ")" { return out; }
+
 
 expression
     = branch
-    / "(" out:expression ")" { return out; }
-    / add
-    / and
-    / divide
     / equals
+    / notequals
     / gt
-    / gte
     / lt
+    / gte
     / lte
-    / modulo
-    / multiply
+    / and
     / or
-    / reference
+    / modulo
+    / add
     / subtract
+    / divide
+    / multiply
     / literal
 
 branch
@@ -78,8 +81,13 @@ number
     }
 
 string
-    = "\"" string:$[^\n]* "\"" {
+    = "\"" string:$[^\"]* "\"" {
         return new AST.StringLiteral(string);
+    }
+
+root
+    = "#" {
+        return new AST.RootLiteral();
     }
 
 add
@@ -99,6 +107,11 @@ divide
 
 equals
     = _ left:literal _ "=" _ right:expression _ {
+        return new AST.EqualsOp(left, right);
+    }
+
+notequals
+    = _ left:literal _ "!=" _ right:expression _ {
         return new AST.EqualsOp(left, right);
     }
 
@@ -143,7 +156,7 @@ subtract
     }
 
 reference
-    = "$" _ arg:expression _ {
+    = "$" _ arg:(literal / expression) _ {
         return new AST.ReferenceOp(arg);
     }
 

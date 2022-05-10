@@ -1,0 +1,22 @@
+fizzbuzz: seed {
+    value := $(# - 1);
+    ? $value % 3 = 0, {
+        write "Fizz", bogus;
+    };
+    ? $value % 5 = 0, {
+        write "Buzz", bogus;
+    };
+    ? ($value % 3 != 0) & ($value % 5 != 0), {
+        write $value;
+    }, {
+        write "";
+    };
+    ? $value =< 30, $fizzbuzz, {};
+    = $value + 1;
+    branch $(@ - 2);
+};
+
+trunk {
+    = 0;
+    branch $fizzbuzz;
+};
