@@ -1,6 +1,6 @@
 import { IExpression } from "../IExpression";
 
-export class AddOp implements IExpression {
+export class ModuloOp implements IExpression {
     constructor(
         public left: IExpression,
         public right: IExpression,
