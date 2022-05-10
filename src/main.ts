@@ -1,3 +1,6 @@
 import { growth } from "./growth";
+import * as fs from "fs";
 
-growth();
+const path = process.argv[2];
+const code = fs.readFileSync(path).toString();
+growth(code);
