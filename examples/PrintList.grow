@@ -34,4 +34,11 @@ printList :seed {
     :branch list2;
     := 0;
     :branch printList;
+    :branch {
+        := 2;
+        := "Hello";
+        := "There";
+    };
+    := 0;
+    :branch printList;
 };

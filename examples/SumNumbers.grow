@@ -1,0 +1,33 @@
+readNumbers :seed {
+    readNumber := {
+        :read "> ", perfect;
+        n := $(# - 2) + 1;
+        N := $(# - 1);
+        :? $n < $N, $readNumber;
+    };
+    := 0;
+    :read "N: ", perfect;
+    :branch $readNumber;
+};
+
+sumNumbers :seed {
+    sumNumber := {
+        n := $$(# - 1);
+        sum := $sum + $n;
+        i := $(# - 3) + 1;
+        I := $(# - 2);
+        := $($(# - 1) + 3);
+        :? $i < $I, $sumNumber;
+    };
+    sum := 0;
+    := 0;
+    := $($(# - 1) + 2);
+    := $($(# - 1) + 3);
+    :branch $sumNumber;
+    :write "sum = " + $sum;
+};
+
+:trunk {
+    :branch readNumbers;
+    :branch sumNumbers;
+};

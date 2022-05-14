@@ -1,5 +1,6 @@
 import { Branch } from "../Language/AST/AST";
 import { Runtime } from "./Runtime";
+import * as promptModule from "prompt-sync";
 
 export const commands = {
     "seed": (runtime: Runtime, args: any[], name: string) => {
@@ -21,6 +22,15 @@ export const commands = {
     "write": (runtime: Runtime, args: any[], name: string) => {
         process.stdout.write(args[0] + (args[1] ?? true ? "\n" : ""));
         return args[0];
+    },
+
+    "read": (runtime: Runtime, args: any[], name: string) => {
+        const prompt = promptModule({ sigint: true });
+        const value = prompt(args[0] ?? "");
+        if (args[1]) {
+            return Number(value);
+        }
+        return value;
     },
 
     "?": (runtime: Runtime, args: any[], name: string) => {
