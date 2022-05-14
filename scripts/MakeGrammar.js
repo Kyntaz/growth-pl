@@ -1,13 +1,10 @@
-const fs = require("fs");
-const peggy = require("peggy");
-const tspegjs = require("ts-pegjs");
+// const fs = require("fs");
+// const jison = require("jison");
+const { execSync } = require("child_process");
 
-const grammarSpec = fs.readFileSync("./src/Grammar/Grammar.pegjs").toString();
+execSync("npx jison ./src/Grammar/Grammar.jison -o ./src/Grammar/Grammar.generated.js");
 
-var parser = peggy.generate(grammarSpec, {
-    output: 'source',
-    format: 'commonjs',
-    plugins: [tspegjs],
-});
+// var grammarSource = fs.readFileSync("./src/Grammar/Grammar.jison", "utf-8");
+// var parser = new jison.Parser(grammarSource).generate();
 
-fs.writeFileSync("./src/Grammar/Grammar.generated.ts", parser);
+// fs.writeFileSync("./src/Grammar/Grammar.generated.ts", parser);
