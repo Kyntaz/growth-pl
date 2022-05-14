@@ -1,4 +1,3 @@
-import { IVisitor } from "../../../IVisitor";
 import { IExpression } from "../IExpression";
 
 export class AddOp implements IExpression {
@@ -6,8 +5,4 @@ export class AddOp implements IExpression {
         public left: IExpression,
         public right: IExpression,
     ) { }
-
-    public accept<R>(visitor: IVisitor<R>): R {
-        return visitor.vAddOp(this);
-    }
 }
