@@ -33,6 +33,7 @@ export const commands = {
         for (const segment of branch.segments) {
             runtime.execute(segment);
         }
+        runtime.popBranch();
         return loc;
     },
 
@@ -42,6 +43,7 @@ export const commands = {
         for (const segment of branch.segments) {
             runtime.execute(segment);
         }
+        runtime.popBranch();
         return loc;
     }
 }

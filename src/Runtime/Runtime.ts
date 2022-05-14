@@ -24,6 +24,10 @@ export class Runtime {
         };
     }
 
+    public popBranch() {
+        this.branchData = this.branchData.root?.branch ?? null;
+    }
+
     public assign(name: string, location: Location) {
         this.names.set(name, location);
     }
