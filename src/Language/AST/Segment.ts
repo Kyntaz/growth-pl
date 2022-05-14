@@ -9,7 +9,7 @@ export class Segment implements ILanguageElement {
         public name?: string,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vSegment(this);
     }
 }

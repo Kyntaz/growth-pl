@@ -7,7 +7,7 @@ export class Branch implements IExpression {
         public segments: Segment[],
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vBranch(this);
     }
 }

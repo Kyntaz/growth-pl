@@ -6,7 +6,7 @@ export class NameLiteral implements IExpression {
         public value: string,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vNameLiteral(this);
     }
 }

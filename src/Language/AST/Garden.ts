@@ -8,7 +8,7 @@ export class Garden implements ILanguageElement {
         public trunk?: Segment,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vGarden(this);
     }
 }

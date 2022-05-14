@@ -6,7 +6,7 @@ export class ReferenceOp implements IExpression {
         public arg: IExpression,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vReferenceOp(this);
     }
 }

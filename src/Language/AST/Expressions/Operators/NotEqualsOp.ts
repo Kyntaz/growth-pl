@@ -7,7 +7,7 @@ export class NotEqualsOp implements IExpression {
         public right: IExpression,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vNotEqualsOp(this);
     }
 }

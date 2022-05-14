@@ -24,28 +24,28 @@ import {
     SubtractOp
 } from "./AST/AST";
 
-export interface IVisitor<R> {
-    vGarden(garden: Garden): R;
-    vSegment(segment: Segment): R;
-    vBranch(branch: Branch): R;
-    vBooleanLiteral(boolean: BooleanLiteral): R;
-    vHereLiteral(here: HereLiteral): R;
-    vNameLiteral(name: NameLiteral): R;
-    vNumberLiteral(number: NumberLiteral): R;
-    vRootLiteral(root: RootLiteral): R;
-    vStringLiteral(string: StringLiteral): R;
-    vAddOp(add: AddOp): R;
-    vAndOp(and: AndOp): R;
-    vDivideOp(divide: DivideOp): R;
-    vEqualsOp(equals: EqualsOp): R;
-    vGreaterThanOp(gt: GreaterThanOp): R;
-    vGreaterThanOrEqualsOp(gte: GreaterThanOrEqualsOp): R;
-    vLessThanOp(lt: LessThanOp): R;
-    vLessThanOrEqualsOp(lte: LessThanOrEqualsOp): R;
-    vModuloOp(modulo: ModuloOp): R;
-    vMultiplyOp(multiply: MultiplyOp): R;
-    vNotEqualsOp(notEquals: NotEqualsOp): R;
-    vOrOp(or: OrOp): R;
-    vReferenceOp(reference: ReferenceOp): R;
-    vSubtractOp(subtract: SubtractOp): R;
+export interface IVisitor {
+    vGarden(garden: Garden): any;
+    vSegment(segment: Segment): any;
+    vBranch(branch: Branch): any;
+    vBooleanLiteral(boolean: BooleanLiteral): any;
+    vHereLiteral(here: HereLiteral): any;
+    vNameLiteral(name: NameLiteral): any;
+    vNumberLiteral(number: NumberLiteral): any;
+    vRootLiteral(root: RootLiteral): any;
+    vStringLiteral(string: StringLiteral): any;
+    vAddOp(add: AddOp): any;
+    vAndOp(and: AndOp): any;
+    vDivideOp(divide: DivideOp): any;
+    vEqualsOp(equals: EqualsOp): any;
+    vGreaterThanOp(gt: GreaterThanOp): any;
+    vGreaterThanOrEqualsOp(gte: GreaterThanOrEqualsOp): any;
+    vLessThanOp(lt: LessThanOp): any;
+    vLessThanOrEqualsOp(lte: LessThanOrEqualsOp): any;
+    vModuloOp(modulo: ModuloOp): any;
+    vMultiplyOp(multiply: MultiplyOp): any;
+    vNotEqualsOp(notEquals: NotEqualsOp): any;
+    vOrOp(or: OrOp): any;
+    vReferenceOp(reference: ReferenceOp): any;
+    vSubtractOp(subtract: SubtractOp): any;
 }

@@ -11,12 +11,11 @@ fizzbuzz :seed {
     }, {
         :write "";
     };
-    :? $value =< 30, $fizzbuzz, {};
     := $value + 1;
-    :branch $(@ - 2);
+    :? $value < 30, fizzbuzz, {};
 };
 
 :trunk {
-    := 0;
-    :branch $fizzbuzz;
+    := 1;
+    :branch fizzbuzz;
 };

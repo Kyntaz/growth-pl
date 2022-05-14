@@ -6,7 +6,7 @@ export class BooleanLiteral implements IExpression {
         public value: boolean,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vBooleanLiteral(this);
     }
 }

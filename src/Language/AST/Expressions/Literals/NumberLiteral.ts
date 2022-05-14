@@ -6,7 +6,7 @@ export class NumberLiteral implements IExpression {
         public value: number,
     ) { }
 
-    public accept<R>(visitor: IVisitor<R>): R {
+    public accept<R>(visitor: IVisitor): R {
         return visitor.vNumberLiteral(this);
     }
 }
