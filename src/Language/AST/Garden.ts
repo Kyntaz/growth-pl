@@ -1,4 +1,5 @@
 import { ILanguageElement } from "../ILanguageElement";
+import { IVisitor } from "../IVisitor";
 import { Segment } from "./Segment";
 
 export class Garden implements ILanguageElement {
@@ -6,4 +7,8 @@ export class Garden implements ILanguageElement {
         public seeds: Segment[],
         public trunk?: Segment,
     ) { }
+
+    public accept<R>(visitor: IVisitor<R>): R {
+        return visitor.vGarden(this);
+    }
 }
