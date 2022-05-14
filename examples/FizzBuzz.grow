@@ -12,10 +12,11 @@ fizzbuzz :seed {
         :write "";
     };
     := $value + 1;
-    :? $value < 30, fizzbuzz;
+    :? $value < $max, fizzbuzz;
 };
 
 :trunk {
+    max :read "", perfect;
     := 1;
     :branch fizzbuzz;
 };
