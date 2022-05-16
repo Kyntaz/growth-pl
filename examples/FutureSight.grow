@@ -1,0 +1,5 @@
+:trunk {
+    :write $result;
+    result := $(@ + 1) + 5;
+    := 3;
+};

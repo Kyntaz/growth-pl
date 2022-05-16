@@ -276,6 +276,7 @@ e
     }
     | "{" segments "}"
     {
+        $2.map((segment, i) => segment.line = i);
         $$ = new yy.Branch($2);
     }
     | "perfect"

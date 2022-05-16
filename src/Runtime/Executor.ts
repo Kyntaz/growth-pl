@@ -39,10 +39,15 @@ export class Executor implements IVisitor {
     }
 
     public vSegment(segment: Segment) {
-        const argVals: any[] = segment.args.map((arg) => arg.accept(this));
-        const loc = this.runtime.doCommand(segment.command, argVals, segment.name);
-        if (segment.name) {
-            this.runtime.assign(segment.name, loc);
+        try {
+            this.runtime.setLine(segment.line);
+            const argVals: any[] = segment.args.map((arg) => arg.accept(this));
+            const loc = this.runtime.doCommand(segment.command, argVals, segment.name);
+            if (segment.name) {
+                this.runtime.assign(segment.name, loc);
+            }
+        } catch (e) {
+            this.runtime.failCommand(segment.line)
         }
     }
 

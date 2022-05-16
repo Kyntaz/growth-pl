@@ -7,17 +7,18 @@ import { commands } from "./Commands";
 
 export class Runtime {
     private commands = commands;
-    private executor = new Executor(this)
+    private executor = new Executor(this);
     private branchData: BranchData = null;
     private seeds = new Map<string, Branch>();
     private names = new Map<string, Location>();
+    private currentLine = 0;
 
     public execute(element: ILanguageElement) {
         return element.accept(this.executor);
     }
 
     public pushBranch(): Location {
-        this.branchData = new BranchData(this.branchData?.where() ?? null);
+        this.branchData = new BranchData(this.where() ?? null);
         return {
             branch: this.branchData,
             at: 0,
@@ -25,6 +26,7 @@ export class Runtime {
     }
 
     public popBranch() {
+        this.currentLine = this.branchData.root?.at ?? 0;
         this.branchData = this.branchData.root?.branch ?? null;
     }
 
@@ -43,7 +45,7 @@ export class Runtime {
             return location;
         }
 
-        return 0;
+        throw new Error("Name does not exist");
     }
 
     public currentRoot() {
@@ -57,18 +59,37 @@ export class Runtime {
         return location.branch.read(location.at);
     }
 
+    public written(line: number) {
+        return this.branchData.written(line);
+    }
+
+    public setLine(line: number) {
+        this.currentLine = line;
+    }
+
     public doCommand(command: string, args: any[], name: string): Location {
         const result = this.commands[command as keyof typeof this.commands](this, args, name);
         if (this.branchData) {
-            return this.branchData.write(result)
+            return this.branchData.write(result, this.currentLine);
         }
+    }
+
+    public failCommand(line: number) {
+        this.branchData.write(undefined, line);
     }
 
     public registerSeed(name: string, branch: Branch) {
         this.seeds.set(name, branch);
     }
 
-    public where() {
-        return this.branchData.where();
+    public where(): Location {
+        if (this.branchData) {
+            return {
+                branch: this.branchData,
+                at: this.currentLine,
+            };
+        } else {
+            return null;
+        }
     }
 }

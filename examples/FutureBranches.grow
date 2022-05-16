@@ -1,0 +1,11 @@
+WriteTheFuture :seed {
+    :write $(# + 1);
+};
+
+:trunk {
+    :branch {
+        :branch WriteTheFuture;
+        := $(# + 1);
+    };
+    := "Hello";
+};
